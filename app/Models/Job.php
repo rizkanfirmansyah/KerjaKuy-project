@@ -10,6 +10,12 @@ class Job extends Model
 {
     use HasFactory;
     use Timestamp;
+    // use Rateable;
 
     protected $guarded = ['id'];
+
+    public function ratings()
+    {
+    return $this->hasMany(Rating::class);
+    }
 }

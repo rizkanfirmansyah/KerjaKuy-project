@@ -77,7 +77,7 @@ height : 600px; width :100%; background-size: cover;"
                         <div class="d-flex justify-content-center">
                             <div class="card mt-3 ml-5" style="width: 15rem; height: 25rem; margin-right : 20px;"
                                 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                                <a href="{{ url('Job_detail/' . $job->id) }}" class="hvr-shrink">
+                                <a href="{{url('Job_detail/ ' . $job->id)}}" class="hvr-shrink">
                                     <img src="{{ asset('images/JobsImage/' . $job->Image) }}" class="card-img-top"
                                         style="height:250px;">
                                 </a>
