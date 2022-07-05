@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplyJob;
 use App\Models\Job;
+use App\Models\Rating;
 use App\Models\Message;
 use App\Models\Profile;
 use App\Models\Region;
@@ -11,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -59,6 +61,13 @@ class HomeController extends Controller
 
 
         return view('/home', compact('request', 'jobs', 'recJobs', 'regions'));
+    }
+
+    public function adminHome()
+    {
+        $user = Auth::user()->id; 
+        $profiles = Profile::where('user_id',$user)->get();
+        return view('admin.dashboard', compact('profiles'));
     }
 
     public function notification()
@@ -215,4 +224,12 @@ class HomeController extends Controller
 
         return redirect('/notifications')->with('success', 'Your message has been send');
     }
+
+    public function postStar (Request $request, Job $job) {
+        $rating = new Rating;
+        $rating->user_id = Auth::id();
+        $rating->rating = $request->input('star');
+        $job->ratings()->save($rating);
+        return redirect()->back()->with('success', 'Job has been rated');
+  }
 }

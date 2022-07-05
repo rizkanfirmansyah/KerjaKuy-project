@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplyJob;
 use App\Models\Job;
+use App\Models\Profile;
 use App\Models\Message;
 use App\Models\Region;
 use Illuminate\Database\Eloquent\Builder;
@@ -271,6 +272,58 @@ class JobController extends Controller
             $job->delete();
         }
 
-        return redirect('home')->with('success', 'Your data has been deleted');
+        return redirect()->back()->with('success', 'Your data has been deleted');
+    }
+
+    public function show_job()
+    {
+        $jobs = Job::all();
+        return view('admin/jobs/job',compact('jobs'));
+    }
+    
+    public function show_job_detail(Job $Job)
+    {
+        $user = Auth::user()->id;
+        $applys = ApplyJob::where('user_id',$user)->where('job_id',$Job->id)->get();
+        $profiles = Profile::where('user_id',$Job->user_id)->get();
+        if($applys->count() > 0)
+        {
+            foreach($applys as $apply)
+            {
+                $apply_job = $apply->job_id;
+            }    
+        }else{
+            $apply_job = null;
+        }
+        return view('JobDetail',compact('Job','apply_job','profiles'));
+    }
+
+    public function show_job_detail_admin(Job $Job)
+    {
+        $user = Auth::user()->id;
+        $applys = ApplyJob::where('user_id',$user)->where('job_id',$Job->id)->get();
+        $profiles = Profile::where('user_id',$Job->user_id)->get();
+        if($applys->count() > 0)
+        {
+            foreach($applys as $apply)
+            {
+                $apply_job = $apply->job_id;
+            }    
+        }else{
+            $apply_job = null;
+        }
+        return view('admin/jobs/JobDetail',compact('Job','apply_job','profiles'));
+    }
+
+    public function myJob()
+    {
+        $user = Auth::user()->id;
+        $jobs = Job::where('user_id',$user)->paginate(5)->withQueryString();
+
+        if($jobs->count() < 1){
+            $jobs = null;
+        }
+
+       return view('myJobs',compact('jobs'));
     }
 }

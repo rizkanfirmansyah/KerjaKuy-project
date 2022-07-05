@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\Region;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -107,6 +108,30 @@ class UserController extends Controller
         $profile->save();
 
         return redirect('profile');
+    }
+
+    public function show_user()
+    {
+        $profiles = Profile::where('role','user')->get();
+        return view('admin/users/user',compact('profiles'));
+    }
+    
+    public function show_user_detail($id)
+    {
+        $profiles = Profile::where('user_id',$id)->get();
+        $jobs = Job::where('user_id',$id)->get();
+        return view('admin/users/userDetail',compact('profiles','jobs'));
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            $user->delete();
+        }
+
+        return redirect()->back()->with('success', 'Your data has been deleted');
     }
 
 

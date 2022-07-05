@@ -121,29 +121,47 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
+                @if(auth()->user()->type == 'user')
                 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <a class="nav-item nav-link" href="{{ url('/home') }}"> Home</a>
-                            <a class="nav-item nav-link" href="{{ url('/profile') }}"> Profile</a>
-                            <a class="nav-item nav-link" href="{{ url('/jobs') }}">Jobs</a>
-                            <a class="nav-item nav-link" href="{{ url('/notifications') }}">Notifications</a>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-item nav-link" href="{{url('/home')}}"> Home</a>
+                                <a class="nav-item nav-link" href="{{url('/profile')}}"> Profile</a>
+                                <a class="nav-item nav-link" href="{{url('/jobs')}}">Jobs</a>
+                                <a class="nav-item nav-link" href="{{url('/myJob')}}">MyJob</a>
+                                <a class="nav-item nav-link" href="{{url('/notifications')}}">Notifications</a>
+                            </div>
                         </div>
-                    </div>
+                    </nav>
                 </nav>
-            </nav>
+                @else
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-item nav-link" href="{{route('dashboard')}}"> Dashboard</a>
+                                    <a class="nav-item nav-link" href="{{url('/profile')}}"> Profile</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </nav>
+                @endif
+            </div>
+
         </nav>
         <main>
             @yield('content')
@@ -162,6 +180,9 @@
     <script>
         AOS.init({
             once: true,
+        });
+        $('#addStar').change('.star', function(e) {
+        $(this).submit();
         });
     </script>
 
