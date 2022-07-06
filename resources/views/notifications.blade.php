@@ -1,10 +1,6 @@
-<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
 @extends('layouts.app')
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap');
-</style>
 
 @section('content')
     <div class="container">
@@ -130,8 +126,7 @@
                                     <input type="hidden" name="comment" value="{{ $messege->comment }}">
                                     <input type="hidden" name="date" value="{{ $messege->date }}">
                                     <input type="hidden" name="Company_id" value="{{ $messege->Company_id }}">
-                                    <button class="btn btn-info" style="float : right; margin-top : 150px;"
-                                        id="buttonRequestAccept"> Accept -
+                                    <button class="btn btn-info buttonRequestAccept" style="float : right; margin-top : 150px;"> Accept -
                                         {{ $messege->request_date ? $messege->request_date : $messege->date }} </button>
                                 </form>
                                 <form action="{{ url('cancel_request/' . $messege->id) }}" method="post">
@@ -146,7 +141,7 @@
                                         Cancel </b> </button>
                                 </form>
                             @elseif ($messege->status == 'Interview')
-                                <button class="btn btn-primary" id="buttonRequest" data-date="{{ $messege->date }}"
+                                <button class="btn btn-primary buttonRequest" data-date="{{ $messege->date }}"
                                     data-id="{{ $messege->id }}" data-company="{{ $messege->Company_id }}"
                                     data-description="{{ $messege->comment }}"
                                     style="float : right; margin-top : 150px;">
@@ -188,7 +183,7 @@
                                         Cancel </b> </button>
                                 </form>
                             @else
-                                <button class="btn btn-warning" id="buttonInterview" data-date="{{ $messege->date }}"
+                                <button class="btn btn-warning buttonInterview"  data-date="{{ $messege->date }}"
                                     data-id="{{ $messege->id }}" data-company="{{ $messege->Company_id }}"
                                     data-description="{{ $messege->comment }}"
                                     style="float : right; margin-top : 150px;">
@@ -288,7 +283,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-warning" id="buttonDisabledInterview">Change
+                                <button type="button" class="btn btn-warning buttonDisabledInterview">Change
                                     Interview</button>
                                 <button type="submit" value="Add"
                                     class="btn btn-primary d-flex justify-content-end">Confirm</button>

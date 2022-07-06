@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->integer('from');
             $table->foreignId('receiver')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('Company_id')->constrained('jobs')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status');
-            $table->string('datetime')->nullable();
+            $table->string('date')->nullable();
+            $table->string('request_date')->nullable();
             $table->text('comment');
             $table->rememberToken();
             $table->timestamps();

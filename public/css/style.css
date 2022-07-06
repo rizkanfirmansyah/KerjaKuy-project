@@ -44,14 +44,14 @@
 }
 
 .orange-1{
-    background-color : #F8B400; 
-    width: 100%; 
+    background-color : #F8B400;
+    width: 100%;
     height : 700px;
 }
 
 .orange-2{
-    background-color : #F8B400; 
-    width: 100%; 
+    background-color : #F8B400;
+    width: 100%;
 }
 
 .avatar h5 {
@@ -73,37 +73,37 @@
   div.stars {
     display: inline-block;
   }
-  
+
   input.star { display: none; }
-  
+
   label.star {
     justify-content: center;
     padding: 10px;
     font-size: 20px;
-    color: 
+    color:
   #444;
     transition: all .2s;
   }
-  
+
   input.star:checked ~ label.star:before {
     content: '⭐';
-    color: 
+    color:
   #e74c3c;
     transition: all .25s;
   }
-  
+
   input.star-5:checked ~ label.star:before {
-    color: 
+    color:
   #e74c3c;
-    text-shadow: 0 0 5px 
+    text-shadow: 0 0 5px
   #7f8c8d;
   }
-  
-  input.star-1:checked ~ label.star:before { color: 
+
+  input.star-1:checked ~ label.star:before { color:
   #F62; }
-  
+
   label.star:hover { transform: rotate(-15deg) scale(1.3); }
-  
+
   label.star:before {
     content: '★';
     font-family: 'FontAwesome';
