@@ -37,8 +37,16 @@
 
 
 
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap');
+    </style>
+
     <!--bttn.surge.sh -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Popperjs -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" crossorigin="anonymous">
@@ -217,7 +225,7 @@
                 })
             })
 
-            $('#buttonInterview').on('click', function() {
+            $('button.buttonInterview').on('click', function() {
                 $('#modalInterview').modal('show')
                 $('#modalInterview input[type="date"]').val($(this).data('date'))
                 $('#modalInterview input[name="id"]').val($(this).data('id'))
@@ -226,7 +234,7 @@
                 $('#modalInterview textarea[name="description"]').text($(this).data('description'))
             })
 
-            $('#buttonRequest').on('click', function() {
+            $('button.buttonRequest').on('click', function() {
                 $('#modalRequest').modal('show')
                 $('#modalRequest input[type="date"]').val($(this).data('date'))
                 $('#modalRequest textarea[name="description"]').val($(this).data('description'))
@@ -235,7 +243,7 @@
                 $('#modalRequest textarea[name="description"]').text($(this).data('description'))
             })
 
-            $('#buttonDisabledInterview').on('click', function() {
+            $('button.buttonDisabledInterview').on('click', function() {
                 $('#modalRequest input[type="date"]').removeAttr('disabled')
                 $('#modalRequest textarea[name="description"]').removeAttr('disabled')
             })
