@@ -66,7 +66,7 @@ class HomeController extends Controller
 
     public function adminHome()
     {
-        $user = Auth::user()->id; 
+        $user = Auth::user()->id;
         $profiles = Profile::where('user_id',$user)->get();
         return view('admin.dashboard', compact('profiles'));
     }
