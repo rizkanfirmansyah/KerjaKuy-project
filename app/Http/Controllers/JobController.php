@@ -289,7 +289,7 @@ class JobController extends Controller
         $applys = ApplyJob::where('user_id',$user)->where('job_id',$Job->id)->get();
         $profiles = Profile::where('user_id',$Job->user_id)->get();
         $ratings = Rating::where('job_id',$Job->id)->avg('rating');
-        $cekMsg = Message::where('receiver',$user)->where('Company_id', $Job->id)->get();
+        $cekMsg = Message::where('receiver',$user)->where('Company_id', $Job->id)->where('status', 'Accepted')->get();
         if($cekMsg->count() > 0)
         {
             foreach($cekMsg as $msg)
