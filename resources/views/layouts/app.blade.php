@@ -19,6 +19,7 @@
     <title>{{ config('app.name', 'KerjaKuy') }}</title>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
@@ -154,6 +155,7 @@
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
                                     <a class="nav-item nav-link" href="{{route('dashboard')}}"> Dashboard</a>
+                                    <a class="nav-item nav-link" href="{{url('/home')}}"> Home</a>
                                     <a class="nav-item nav-link" href="{{url('/profile')}}"> Profile</a>
                                 </div>
                             </div>

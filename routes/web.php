@@ -30,7 +30,7 @@ Route::get('/jobs','App\Http\Controllers\JobController@jobs_list');
 Route::get('/myJob','App\Http\Controllers\JobController@myJob');
 
 Route::get('/notifications','App\Http\Controllers\HomeController@notification');
-Route::post('/notifications/{job}', 'App\Http\Controllers\HomeController@postStar')->name('postStar');
+Route::post('/Job_detail/{job}', 'App\Http\Controllers\HomeController@postStar')->name('postStar');
 
 Route::get('/notification_detail/{notification}','App\Http\Controllers\HomeController@notification_detail');
 Route::post('/notification_detail/{apply}','App\Http\Controllers\HomeController@message');

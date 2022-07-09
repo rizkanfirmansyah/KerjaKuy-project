@@ -38,8 +38,9 @@ class HomeController extends Controller
         $profiles = Profile::where('user_id', $user)->get();
         $regions = Region::all();
         $datas = DB::table('jobs')
-            ->join('regions', 'jobs.region_id', '=', 'regions.id');
-        $jobs = $datas->get();
+            ->join('regions', 'jobs.region_id', '=', 'regions.id')
+            ->selectRaw('*, jobs.id as idjobs');
+            $jobs = $datas->get();
 
         if ($request->region || $request->searchSp) {
             $queryJobOrProvince = $datas->where('JobCategory', 'like', '%' . $request->searchSp . '%')->get();

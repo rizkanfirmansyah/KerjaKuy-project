@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplyJob;
 use App\Models\Job;
+use App\Models\Rating;
 use App\Models\Profile;
 use App\Models\Message;
 use App\Models\Region;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class JobController extends Controller
 {
@@ -286,6 +288,17 @@ class JobController extends Controller
         $user = Auth::user()->id;
         $applys = ApplyJob::where('user_id',$user)->where('job_id',$Job->id)->get();
         $profiles = Profile::where('user_id',$Job->user_id)->get();
+        $ratings = Rating::where('job_id',$Job->id)->avg('rating');
+        $cekMsg = Message::where('receiver',$user)->where('Company_id', $Job->id)->get();
+        if($cekMsg->count() > 0)
+        {
+            foreach($cekMsg as $msg)
+            {
+                $rate = $msg->receiver;
+            }    
+        }else{
+            $rate = null;
+        }
         if($applys->count() > 0)
         {
             foreach($applys as $apply)
@@ -295,7 +308,7 @@ class JobController extends Controller
         }else{
             $apply_job = null;
         }
-        return view('JobDetail',compact('Job','apply_job','profiles'));
+        return view('JobDetail',compact('Job','apply_job','profiles','ratings', 'rate', 'cekMsg'));
     }
 
     public function show_job_detail_admin(Job $Job)
@@ -303,6 +316,7 @@ class JobController extends Controller
         $user = Auth::user()->id;
         $applys = ApplyJob::where('user_id',$user)->where('job_id',$Job->id)->get();
         $profiles = Profile::where('user_id',$Job->user_id)->get();
+        $ratings = Rating::where('job_id',$Job->id)->avg('rating');
         if($applys->count() > 0)
         {
             foreach($applys as $apply)
@@ -312,7 +326,7 @@ class JobController extends Controller
         }else{
             $apply_job = null;
         }
-        return view('admin/jobs/JobDetail',compact('Job','apply_job','profiles'));
+        return view('admin/jobs/JobDetail',compact('Job','apply_job','profiles', 'ratings'));
     }
 
     public function myJob()

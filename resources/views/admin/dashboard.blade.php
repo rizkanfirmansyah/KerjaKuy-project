@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Kelola data users</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"></p>
                   <a href="{{route('user')}}" class="btn btn-primary">Kelola</a>
                 </div>
               </div>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Kelola data jobs</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"></p>
                   <a href="{{route('job')}}" class="btn btn-primary">Kelola</a>
                 </div>
               </div>
