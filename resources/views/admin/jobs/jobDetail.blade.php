@@ -18,10 +18,10 @@
         <h5 class="card-title">{{$Job->CompanyName}}</h5>
         <p class="card-text">{{$Job->JobCategory}}</p>
         <p class="card-text"><small class="text-muted">{{$Job->Description}}</small></p>
-     
+        <p class="card-text"><small class="text-muted"> Rating Job: <span class="fa fa-star checked"></span> {{ round($ratings, 2) }}</p>
         <p class="card-text"><small class="text-muted"> Umur(Minimal): {{$Job->Age}}</p>
         <p class="card-text"><small class="text-muted"> Gender : {{$Job->Gender}}</p>
-        @if(Auth::user()->type == 1)
+        @if(Auth::user()->type == 'admin')
           <p class="card-text">Uploaded by :</p>
           @foreach($profiles as $profile)
             <p class="card-text"><small class="text-muted">User Id      : {{$profile->user_id}}</small></p>

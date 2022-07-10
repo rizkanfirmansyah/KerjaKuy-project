@@ -12,7 +12,7 @@ class Rating extends Model
 
     protected $table = 'ratings';
 
-    public $fillable = ['rating', 'rateable_id', 'user_id'];
+    public $fillable = ['rating', 'user_id', 'job_id'];
 
     /**
      * @return mixed

@@ -1,6 +1,10 @@
+<link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
 @extends('layouts.app')
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400&display=swap');
+</style>
 
 @section('content')
     <div class="container">
@@ -77,45 +81,12 @@
                                 @endif
                             @endforeach
                             @if ($messege->status == 'Accepted')
-                            <form class="form-horizontal poststars" action="{{route('postStar', $job->id)}}" method="POST">
-                                {{ csrf_field() }}
-                                      <div class="form-group required">
-                                        <div class="col-sm-12">
-                                          <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
-                                          <label class="star star-5" for="star-5"></label>
-                                          <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
-                                          <label class="star star-4" for="star-4"></label>
-                                          <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
-                                          <label class="star star-3" for="star-3"></label>
-                                          <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
-                                          <label class="star star-2" for="star-2"></label>
-                                          <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
-                                          <label class="star star-1" for="star-1"></label>
-                                         </div>
-                                        <button class="btn btn-warning" type="submit" id="addStar"> Rate </button>
-                                      </div>
-                              </form>
+                                <a href="{{ ('Job_detail/' . $messege->Company_id) }}">
+                                    <button class="btn btn-warning"> Rate </button>
+                                </a>
                                 <button type="button" class="btn btn-success"
                                     style="float : right; margin-top : 150px;">Status : {{ $messege->status }} </button>
                             @elseif ($messege->status == 'Rejected')
-                            <form class="form-horizontal poststars" action="{{route('postStar', $job->id)}}" method="POST">
-                                {{ csrf_field() }}
-                                      <div class="form-group required">
-                                        <div class="col-sm-12">
-                                          <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
-                                          <label class="star star-5" for="star-5"></label>
-                                          <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
-                                          <label class="star star-4" for="star-4"></label>
-                                          <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
-                                          <label class="star star-3" for="star-3"></label>
-                                          <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
-                                          <label class="star star-2" for="star-2"></label>
-                                          <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
-                                          <label class="star star-1" for="star-1"></label>
-                                         </div>
-                                        <button class="btn btn-warning" type="submit" id="addStar"> Rate </button>
-                                      </div>
-                              </form>
                                 <button class="btn btn-danger" style="float : right; margin-top : 150px;"> Status :
                                     {{ $messege->status }} </button>
                             @elseif ($messege->status == 'Waiting')
@@ -126,7 +97,8 @@
                                     <input type="hidden" name="comment" value="{{ $messege->comment }}">
                                     <input type="hidden" name="date" value="{{ $messege->date }}">
                                     <input type="hidden" name="Company_id" value="{{ $messege->Company_id }}">
-                                    <button class="btn btn-info buttonRequestAccept" style="float : right; margin-top : 150px;"> Accept -
+                                    <button class="btn btn-info" style="float : right; margin-top : 150px;"
+                                        id="buttonRequestAccept"> Accept -
                                         {{ $messege->request_date ? $messege->request_date : $messege->date }} </button>
                                 </form>
                                 <form action="{{ url('cancel_request/' . $messege->id) }}" method="post">
@@ -141,7 +113,7 @@
                                         Cancel </b> </button>
                                 </form>
                             @elseif ($messege->status == 'Interview')
-                                <button class="btn btn-primary buttonRequest" data-date="{{ $messege->date }}"
+                                <button class="btn btn-primary" id="buttonRequest" data-date="{{ $messege->date }}"
                                     data-id="{{ $messege->id }}" data-company="{{ $messege->Company_id }}"
                                     data-description="{{ $messege->comment }}"
                                     style="float : right; margin-top : 150px;">
@@ -183,7 +155,7 @@
                                         Cancel </b> </button>
                                 </form>
                             @else
-                                <button class="btn btn-warning buttonInterview"  data-date="{{ $messege->date }}"
+                                <button class="btn btn-warning" id="buttonInterview" data-date="{{ $messege->date }}"
                                     data-id="{{ $messege->id }}" data-company="{{ $messege->Company_id }}"
                                     data-description="{{ $messege->comment }}"
                                     style="float : right; margin-top : 150px;">
@@ -283,7 +255,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-warning buttonDisabledInterview">Change
+                                <button type="button" class="btn btn-warning" id="buttonDisabledInterview">Change
                                     Interview</button>
                                 <button type="submit" value="Add"
                                     class="btn btn-primary d-flex justify-content-end">Confirm</button>
