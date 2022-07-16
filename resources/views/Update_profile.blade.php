@@ -80,7 +80,7 @@
                     @enderror
                 </div>
                 <center>
-                    <button type="submit" value="Add" class="bttn-warning bttn-jelly bttn-sm mt-5" style
+                    <button type="button" id="SubmitForm" value="Add" class="bttn-warning bttn-jelly bttn-sm mt-5" style
                         ="width : 100px; height: 35px;">Update</button>
                 </center>
             </form>

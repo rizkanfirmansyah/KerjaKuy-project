@@ -33,7 +33,7 @@
                         <form action="{{url('delete_job/ ' . $job->id)}}" method="post">
                             @method('delete')
                             @csrf
-                            <button type="submit" value="Add" class="btn btn-danger mt-3">delete</button>
+                            <button type="button" id="confirmDeleteForm" value="Add" class="btn btn-danger mt-3">delete</button>
                           </form>
                     </td>
                 </tr>

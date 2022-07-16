@@ -24,7 +24,7 @@
                         </center>
                         <div class="row mb-3 d-flex justify-content-center">
                             <div class="col-md-6 mt-3">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter your email address">
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Enter your email address">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
 
                         <div class="row mb-2 d-flex justify-content-center">
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter your password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password" placeholder="Enter your password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

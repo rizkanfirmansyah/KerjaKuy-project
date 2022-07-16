@@ -9,7 +9,7 @@
 
 <!-- Bootstrap -->
       <!-- Bootstrap CSS -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
@@ -30,13 +30,13 @@
 
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Owl Carousel -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" rel="stylesheet">
-    
+
     <!-- Hover CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" rel="stylesheet">
-    
+
     <!--bttn.surge.sh -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css" rel="stylesheet">
 
@@ -52,6 +52,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                @if (\Session::has('error'))
+                <div id="SweetAlert" data-message="{{ \Session::get('error') }}">
+                </div>
+            @endif
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -83,15 +88,15 @@
     @yield('content')
 </div>
 
-<script>
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <!-- AOS Call -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.18/sweetalert2.all.js"
+        integrity="sha512-B7MXRDJP7RdziIUtKq5XuOjhtDJvrKDzbY0NC0NswTQX6dYMCW2KHwD7NHMPRphpvC7yrk/ixoL9NAG0Gh7NQw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
   AOS.init({
       once : true,
@@ -103,23 +108,34 @@
 <script>
     $(document).ready(function(){
         $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
-})
+            loop:true,
+            margin:10,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+
+            if ($('#SweetAlert').data('message').length > 0) {
+                Swal.fire({
+                    title: 'Error',
+                    text: $('#SweetAlert').data('message'),
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
+            }
     });
 </script>
+
+
 </body>
 
 </html>

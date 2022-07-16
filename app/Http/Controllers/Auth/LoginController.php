@@ -40,25 +40,25 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {   
+    {
         $input = $request->all();
-     
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
-     
+
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
+            $name = auth()->user()->name;
             if (auth()->user()->type == 'admin') {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard')->with('success', 'Login Sucess!!, Welcome '. $name);
             }else{
-                return redirect()->route('home');
+                return redirect()->route('home')->with('success', 'Login Sucess!!, Welcome '. $name);
             }
         }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+            return redirect()->route('login');
         }
-          
+
     }
 }

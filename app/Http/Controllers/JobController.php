@@ -280,9 +280,10 @@ class JobController extends Controller
     public function show_job()
     {
         $jobs = Job::all();
+
         return view('admin/jobs/job',compact('jobs'));
     }
-    
+
     public function show_job_detail(Job $Job)
     {
         $user = Auth::user()->id;
@@ -295,7 +296,7 @@ class JobController extends Controller
             foreach($cekMsg as $msg)
             {
                 $rate = $msg->receiver;
-            }    
+            }
         }else{
             $rate = null;
         }
@@ -304,7 +305,7 @@ class JobController extends Controller
             foreach($applys as $apply)
             {
                 $apply_job = $apply->job_id;
-            }    
+            }
         }else{
             $apply_job = null;
         }
@@ -322,7 +323,7 @@ class JobController extends Controller
             foreach($applys as $apply)
             {
                 $apply_job = $apply->job_id;
-            }    
+            }
         }else{
             $apply_job = null;
         }

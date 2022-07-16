@@ -227,6 +227,54 @@
                 })
             })
 
+            $('#confirmDeleteForm').on('click', function() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Apakah kamu yakin ingin menghapus data ini?!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    }
+                })
+            })
+
+            $('#SubmitForm').on('click', function () {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Apakah kamu yakin ingin memperbaharui data ini?!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, update it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    }
+                })
+            })
+
+            $('#AddForm').on('click', function () {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Apakah kamu yakin ingin menambah data ini?!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, save it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    }
+                })
+            })
+
             $('button.buttonInterview').on('click', function() {
                 $('#modalInterview').modal('show')
                 $('#modalInterview input[type="date"]').val($(this).data('date'))

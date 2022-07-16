@@ -106,7 +106,7 @@
             </div>
             <br>
             <center>
-                <button type="submit" value="Add" class="btn btn-success" style
+                <button type="button" id="AddForm" value="Add" class="btn btn-success" style
                     ="width : 100px; height: 35px;">Submit</button>
                 <button type="reset" value="Reset" class="btn btn-danger" style
                     ="width : 100px; height: 35px;">Reset</button>

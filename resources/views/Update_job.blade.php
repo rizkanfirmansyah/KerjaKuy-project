@@ -90,7 +90,7 @@
                 @enderror
             </div>
             <br>
-            <button type="submit" value="Add" class="btn btn-primary">Submit</button>
+            <button type="button" id="SubmitForm" value="Add" class="btn btn-primary">Submit</button>
             <button type="reset" value="Reset" class="btn btn-warning">Reset</button>
         </form>
     </div>
